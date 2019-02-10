@@ -1,10 +1,11 @@
-package com.foo.match;
+package com.foo.mapper;
 
 import com.foo.football.LeagueTableEntry;
+import com.foo.match.Match;
 
-public class MatchToLeagueTableEntryAdder {
+class MatchAdder {
 
-	public static void addMatchToEntry(Match match, LeagueTableEntry entry, boolean home) {
+	static void addMatchToEntry(Match match, LeagueTableEntry entry, boolean home) {
 		entry.setDrawn(entry.getDrawn() + (match.isDraw() ? 1 : 0));
 		entry.setWon(
 				entry.getWon()

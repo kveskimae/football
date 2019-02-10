@@ -1,12 +1,13 @@
-package com.foo.match;
+package com.foo.mapper;
 
 import com.foo.football.LeagueTableEntry;
+import com.foo.match.Match;
 import org.junit.jupiter.api.Test;
 
-import static com.foo.match.MatchToLeagueTableEntryAdder.addMatchToEntry;
+import static com.foo.mapper.MatchAdder.addMatchToEntry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MatchToLeagueTableEntryAdderTests {
+public class MatchAdderTests {
 
 	@Test
 	public void testAddMatchToEntryHome() {
