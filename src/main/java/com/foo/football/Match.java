@@ -1,5 +1,7 @@
 package com.foo.football;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Match {
 
 	private String homeTeam​;
@@ -30,4 +32,8 @@ public class Match {
 		return awayScore​;
 	}
 
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
+	}
 }
