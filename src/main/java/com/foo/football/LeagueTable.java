@@ -2,7 +2,7 @@ package com.foo.football;
 
 import com.foo.match.Match;
 
-import java.util.*;
+import java.util.List;
 
 public class LeagueTable {
 

@@ -1,13 +1,14 @@
 package com.foo.util;
 
-import com.foo.App;
 import com.foo.match.Match;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class FixtureDownloadReader {
 
 			Validate.notNull(resource);
 
-			Reader in  = new FileReader(resource.getFile());
+			Reader in = new FileReader(resource.getFile());
 
 			Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
 			List<Match> matches = new ArrayList<>();

@@ -3,9 +3,7 @@ package com.foo;
 import com.foo.football.LeagueTable;
 import com.foo.match.Match;
 import com.foo.util.FixtureDownloadReader;
-import org.apache.commons.lang3.Validate;
 
-import java.net.URL;
 import java.util.List;
 
 public class App {

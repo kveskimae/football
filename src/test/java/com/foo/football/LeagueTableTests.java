@@ -62,5 +62,5 @@ public class LeagueTableTests {
 		assertEquals("Huddersfield", last.getTeamName​());
 		assertEquals(11, last.getPoints());
 	}
-	
+
 }
