@@ -1,99 +1,108 @@
 package com.foo.football;
 
-public class LeagueTableEntry {
+import java.util.Objects;
+
+public class LeagueTableEntry implements Comparable<LeagueTableEntry> {
 
 	private String teamName​;
-	private int played​;
 	private int won​;
 	private int drawn​;
 	private int lost​;
 	private int goalsFor​;
 	private int goalsAgainst​;
-	private int goalDifference​;
-	private int points​;
 
-	public LeagueTableEntry(String teamName​, int played​, int won​, int drawn​, int lost​, int goalsFor​, int goalsAgainst​, int goalDifference​, int points​) {
+	public LeagueTableEntry(String teamName​) {
+		this(teamName​, 0, 0, 0, 0, 0);
+	}
+
+	public LeagueTableEntry(String teamName​, int won​, int drawn​, int lost​, int goalsFor​, int goalsAgainst​​) {
 		this.teamName​ = teamName​;
-		this.played​ = played​;
 		this.won​ = won​;
 		this.drawn​ = drawn​;
 		this.lost​ = lost​;
 		this.goalsFor​ = goalsFor​;
 		this.goalsAgainst​ = goalsAgainst​;
-		this.goalDifference​ = goalDifference​;
-		this.points​ = points​;
 	}
 
 	public String getTeamName​() {
 		return teamName​;
 	}
 
-	public void setTeamName​(String teamName​) {
-		this.teamName​ = teamName​;
+	public int getPlayed() {
+		return getWon() + getDrawn() + getLost();
 	}
 
-	public int getPlayed​() {
-		return played​;
-	}
-
-	public void setPlayed​(int played​) {
-		this.played​ = played​;
-	}
-
-	public int getWon​() {
+	public int getWon() {
 		return won​;
 	}
 
-	public void setWon​(int won​) {
+	public void setWon(int won​) {
 		this.won​ = won​;
 	}
 
-	public int getDrawn​() {
+	public int getDrawn() {
 		return drawn​;
 	}
 
-	public void setDrawn​(int drawn​) {
+	public void setDrawn(int drawn​) {
 		this.drawn​ = drawn​;
 	}
 
-	public int getLost​() {
+	public int getLost() {
 		return lost​;
 	}
 
-	public void setLost​(int lost​) {
+	public void setLost(int lost​) {
 		this.lost​ = lost​;
 	}
 
-	public int getGoalsFor​() {
+	public int getGoalsFor() {
 		return goalsFor​;
 	}
 
-	public void setGoalsFor​(int goalsFor​) {
+	public void setGoalsFor(int goalsFor​) {
 		this.goalsFor​ = goalsFor​;
 	}
 
-	public int getGoalsAgainst​() {
+	public int getGoalsAgainst() {
 		return goalsAgainst​;
 	}
 
-	public void setGoalsAgainst​(int goalsAgainst​) {
+	public void setGoalsAgainst(int goalsAgainst​) {
 		this.goalsAgainst​ = goalsAgainst​;
 	}
 
-	public int getGoalDifference​() {
-		return goalDifference​;
+	public int getGoalDifference() {
+		return getGoalsFor() - getGoalsAgainst();
 	}
 
-	public void setGoalDifference​(int goalDifference​) {
-		this.goalDifference​ = goalDifference​;
+	public int getPoints() {
+		return 3 * getWon() + 1 * getDrawn() + 0 * getLost();
 	}
 
-	public int getPoints​() {
-		return points​;
+	@Override
+	public int compareTo(LeagueTableEntry o) {
+		if (Integer.compare(this.getPoints(), o.getPoints()) != 0) {
+			return Integer.compare(this.getPoints(), o.getPoints());
+		} else if (Integer.compare(this.getGoalDifference(), o.getGoalDifference()) != 0) {
+			return Integer.compare(this.getGoalDifference(), o.getGoalDifference());
+		} else if (Integer.compare(this.getGoalsFor(), o.getGoalsFor()) != 0) {
+			return Integer.compare(this.getGoalsFor(), o.getGoalsFor());
+		} else {
+			return this.getTeamName​().compareTo(o.getTeamName​());
+		}
 	}
 
-	public void setPoints​(int points​) {
-		this.points​ = points​;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		LeagueTableEntry that = (LeagueTableEntry) o;
+		return teamName​.equals(that.teamName​);
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(teamName​);
+	}
 }

@@ -36,4 +36,13 @@ public class Match {
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
 	}
+
+	public boolean isDraw() {
+		return Integer.compare(homeScore​, awayScore​) == 0;
+	}
+
+	public boolean isHomeWin() {
+		return Integer.compare(homeScore​, awayScore​) > 0;
+	}
+
 }
